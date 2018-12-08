@@ -21,4 +21,11 @@ public class PlayerController : MonoBehaviour {
 
 		rb.AddForce (movement * speed);
 	}
+
+	//Will deactive the object on contact
+	void OnTriggerEnter(Collider other) {
+		if (other.gameObject.CompareTag("Pick Up")) {
+			other.gameObject.SetActive(false);
+		}
+	}
 }
