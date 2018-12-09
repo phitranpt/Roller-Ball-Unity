@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour {
 	public float speed;
 	public Text countText;
 	public Text winText;
+	public float timeLeft = 10.0f;
+	public Text timeText;
 	private Rigidbody rb;
 	private int count;
 
@@ -16,6 +18,11 @@ public class PlayerController : MonoBehaviour {
 		count = 0;
 		SetCountText ();
 		winText.text = "";
+	}
+
+	void Update () 
+	{
+		SetTimeText ();
 	}
 
 	// This is where our physics code will go
@@ -35,17 +42,28 @@ public class PlayerController : MonoBehaviour {
 		if (other.gameObject.CompareTag("Pick Up")) 
 		{
 			other.gameObject.SetActive(false);
-			count = count + 1;
+			count += 1;
 			SetCountText ();
 		}
 	}
-	
+
+	//Display a win text if all cubes are collected
 	void SetCountText () 
 	{
 		countText.text = "Count: " + count.ToString();
 		if (count >= 12) 
 		{
 			winText.text = "You Win!";
+		}
+	}
+
+	void SetTimeText ()
+	{
+		timeLeft -= Time.deltaTime;
+		timeText.text = (timeLeft).ToString("0");
+		if (timeLeft < 0)
+		{
+			timeText.text = "Game Over";
 		}
 	}
 }
