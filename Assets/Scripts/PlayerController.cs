@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+		Debug.Log("Hello World!");
 		rb = GetComponent<Rigidbody>();
 		count = 0;
 		SetCountText ();
