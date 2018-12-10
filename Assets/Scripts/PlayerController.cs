@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour {
 	void SetCountText () 
 	{
 		countText.text = "Count: " + count.ToString();
-		if (count >= 12) 
+		if (count >= 13) 
 		{
 			winText.text = "You Win!";
 		}
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour {
 	void SetTimeText ()
 	{
 		timeLeft -= Time.deltaTime;
-		timeText.text = (timeLeft).ToString("0");
+		timeText.text = "Time: " + timeLeft.ToString("0");
 		if (timeLeft < 0)
 		{
 			timeText.text = "Game Over";
